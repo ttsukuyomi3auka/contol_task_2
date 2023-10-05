@@ -12,17 +12,17 @@ void main(List<String> arguments) async {
   GetCar getCar =GetCar.fromJson(response.data);
   List<dynamic> allCars=[];
   allCars.addAll(getCar.cars);
-  double maxPrice=0;
-  int idMax=0;
+  double minPrice=5000;
+  int idMin=0;
   for (var el in allCars) {
     String subStr=el.price;
     subStr = subStr.substring(1,8);
     double curPrice= double.parse(subStr);
-    if (curPrice>maxPrice){
-      maxPrice=curPrice;
-      idMax=el.id;
+    if (curPrice<minPrice){
+      minPrice=curPrice;
+      idMin=el.id;
     }
   }
-  print(idMax);
+  print(idMin);
   
 }
